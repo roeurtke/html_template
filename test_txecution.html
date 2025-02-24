@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAMS - Dashboard</title>
+    <title>KAMS - Test Execution</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -117,6 +117,34 @@
         .profile-dropdown a:hover {
             background: #f0f0f0;
         }
+        .test-execution-table {
+            margin-top: 20px;
+        }
+        .test-execution-table th,
+        .test-execution-table td {
+            vertical-align: middle;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .status-badge.passed {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-badge.failed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .status-badge.in-progress {
+            background: #fff3cd;
+            color: #856404;
+        }
     </style>
 </head>
 <body>
@@ -126,7 +154,7 @@
             <div class="ms-auto profile-menu" onclick="toggleProfileDropdown(event)">
                 <img src="https://via.placeholder.com/40">
                 <div class="profile-dropdown" id="profileDropdown">
-                    <a href="#"><span>Profile</span></a>
+                    <a href="#">Profile</a>
                     <a href="login.html"><span>Logout</span></a>
                 </div>
             </div>
@@ -145,8 +173,57 @@
     </div>
     <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
     <div class="content" id="content">
-        <h1>Dashboard</h1>
-        <p>Manage your automation workflows efficiently.</p>
+        <h1>Test Execution</h1>
+        <div class="action-buttons">
+            <button class="btn btn-primary">Start Execution</button>
+            <button class="btn btn-secondary">Schedule Execution</button>
+        </div>
+        <div class="test-execution-table">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Test Suite</th>
+                        <th>Status</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Login Suite</td>
+                        <td><span class="status-badge passed">Passed</span></td>
+                        <td>2023-10-01 10:00 AM</td>
+                        <td>2023-10-01 10:30 AM</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">View Results</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Registration Suite</td>
+                        <td><span class="status-badge failed">Failed</span></td>
+                        <td>2023-10-02 11:00 AM</td>
+                        <td>2023-10-02 11:45 AM</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">View Results</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Password Reset Suite</td>
+                        <td><span class="status-badge in-progress">In Progress</span></td>
+                        <td>2023-10-03 09:00 AM</td>
+                        <td>-</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">View Results</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script>
         function toggleSidebar() {
